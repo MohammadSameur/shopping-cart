@@ -25,11 +25,11 @@
 
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button id="phoneMinus" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input type="text" id="phoneAmount" class="form-control text-center" value="1">
+                           <button id="phoneAdd" class="btn btn-default"><i class="fas fa-plus"></i></button>
                         </div>
-                        <h5>$1219</h5>
+                        <h5>$ <span id="PhonePrice">1219</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -78,6 +78,69 @@
       </div>
    </section>
 
+  <!-- Script work start from here -->
+
+  <script>
+   
+   // phone increase btn to cart
+   const phoneAddBtn = document.getElementById('phoneAdd');
+   phoneAddBtn.addEventListener('click', function(){
+      const updatedPhoneAmount = getInputNumber('phoneAmount');
+      console.log(updatedPhoneAmount);
+      
+
+      // updateSpanText("PhonePrice", phoneAmount);
+
+      const totalPhonePrice = 1219 * updatedPhoneAmount;
+      document.getElementById('PhonePrice').innerHTML = totalPhonePrice;
+
+
+
+
+   })
+
+
+   // phone increase btn to cart
+   // const phoneMinusBtn = document.getElementById('phoneMinus');
+   //    phoneMinusBtn.addEventListener('click', function(){
+   //    const phoneAmountM = document.getElementById('phoneAmount').value;
+   //    const currentPhoneAmountM = parseFloat(phoneAmountM);
+   //    const latestPhoneAmountM =  currentPhoneAmountM - 1;
+   //    document.getElementById('phoneAmount').value = latestPhoneAmountM;
+
+   //    const PhonePrice = document.getElementById('PhonePrice').innerHTML;
+   //    const currentPhonePrice = parseFloat(PhonePrice);
+
+   //    const totalPhonePrice = 1219 *  latestPhoneAmountM;
+   //    document.getElementById('PhonePrice').innerHTML = totalPhonePrice;
+
+
+   // })
+
+   // common code inside a function
+   function getInputNumber(id){
+      const phoneAmount = document.getElementById(id).value;
+      const currentPhoneAmount = parseFloat(phoneAmount);
+      const latestPhoneAmount =  currentPhoneAmount+1;
+      document.getElementById(id).value = latestPhoneAmount;
+      return latestPhoneAmount;
+   };
+
+   function updateSpanText(id, phoneAmount){
+      // const PhonePrice = document.getElementById(id).innerHTML;
+      // const currentPhonePrice = parseFloat(PhonePrice);
+      // const totalPhonePrice = 1219 * phoneAmount;
+      // document.getElementById(id).innerHTML = totalPhonePrice;
+   }
+
+   // const
+
+  </script>
+
+
+  
+
+  <!-- script end here -->
 
 </body>
 

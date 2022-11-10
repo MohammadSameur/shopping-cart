@@ -64,9 +64,9 @@
                      </div>
 
                      <div class="col-md-4 status">
-                        <h5>$1,278</h5>
-                        <h5>$0</h5>
-                        <h5>$1,278</h5>
+                        <h5>$ <span id="total-price"> 1,278</span></h5>
+                        <h5>$ <span id="tax-count">0</span></h5>
+                        <h5>$ <span id="priceWithTax"> 1,278</span></h5>
                      </div>
                   </div>
                </div>
@@ -116,9 +116,36 @@
          // const productTotal = productNewCount * 1219;
 
          document.getElementById(product+'Price').innerText =  productTotal;
+
+         calculateTotal()
     
   };
 
+  // calculate total price and tax
+
+  function calculateTotal(){
+      const phoneTotalPrice = document.getElementById('phonePrice').innerHTML; 
+      const phoneTotalPriceCount = parseInt(phoneTotalPrice);
+
+      const caseTotalPrice = document.getElementById('casePrice').innerHTML; 
+      const caseTotalPriceCount = parseInt(caseTotalPrice);
+
+      const totalProductPrice = phoneTotalPriceCount + caseTotalPriceCount;
+      document.getElementById('total-price').innerText = totalProductPrice;
+
+      const tax = Math.round(totalProductPrice * .1);
+      document.getElementById('tax-count').innerText = tax;
+
+      const ultimateTotal = totalProductPrice + tax; 
+      document.getElementById('priceWithTax').innerText = ultimateTotal;
+
+      // document.getElementById('tax-count').innerText = Math.round(totalProductPrice * 0.1);
+
+
+
+
+
+  }
   
 //   // Phone  
 //   const phoneAddBtn = document.getElementById('phoneAdd');
